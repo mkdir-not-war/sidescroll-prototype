@@ -5,6 +5,9 @@
 #define MS_PER_UPDATE   8.0 // 125 FPS
 
 #include "graphicsmanager.h"
+#include "gamestate.h"
+
+GameState* gs;
 
 void temp_update()
 {
@@ -14,13 +17,27 @@ void temp_update()
     sf::sleep(sf::milliseconds(millis));
 }
 
+void set_gamestate(GameState* newstate)
+{
+    GameState* old_state = gs;
+    gs = newstate;
+    delete old_state;
+}
+
 int main()
 {
     // setup window
     sf::RenderWindow window(sf::VideoMode(800, 600), "client");
+    /*
+    * try to find a way to not use the singleton
+    * because calling it all the time is going to be slow
+    */
     GraphicsManager::getInstance();
     GraphicsManager::getInstance().setWindow(&window);
     GraphicsManager::getInstance().loadSprite("./../res/graphics/actors/player1.jpg");
+
+    // initialize gamestate
+    gs = new GS_PlayGame();
 
     // setup vars for game loop
     sf::Clock clock;
