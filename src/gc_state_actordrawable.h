@@ -11,19 +11,21 @@
 #define GC_STATE_ACTORDRAWABLE_H_775874323456
 
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+
+#include "gc_state.h"
 
 enum class MOTION_STATE { idle, moving };
 
 class GC_State_ActorDrawable : public GC_State
 {
 protected:
-	GC_State_ActorDrawable(sf::Texture*);
+	GC_State_ActorDrawable(const std::string &, sf::Texture*);
 
 public:
 	~GC_State_ActorDrawable();
 
 	sf::Sprite sprite;
-
 
 	void setSpriteTexture(sf::Texture*);
 };

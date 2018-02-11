@@ -2,14 +2,15 @@
 
 #include "gamestate.h"
 
-GameState::GameState()
+GameState::GameState() :
+	currentstate(GS::play)
 {
-	loadGameObjects();
+	load_GameObjects();
 }
 
 GameState::~GameState()
 {
-	deleteGameObjects();
+	delete_GameObjects();
 }
 
 /*
@@ -21,20 +22,25 @@ GameState::~GameState()
 *	button at ~60 Hz.
 *
 */
-void GameState::loadGameObjects(GS currstate)
+void GameState::load_GameObjects()
 {
 	// load up gameobject and component lists
-	switch(currstate) {
-		case play:
+	switch(currentstate) {
+		case GS::play:
 			break;
 		default:
 			break;
 	}
 }
 
-void GameState::deleteGameObjects()
+void GameState::delete_GameObjects()
 {
 	// empty gameobject and component lists
+}
+
+sf::Vector2f GameState::getCamera_worldpos() const
+{
+	return entities[0].get_worldpos();
 }
 
 void GameState::update()
@@ -48,11 +54,17 @@ void GameState::update()
 
 sf::Sprite* GameState::get_spritelist(int* size)
 {
-	sf::Sprite spritelist[game::MAX_SPRITES];
 	int listsize = 0;
 
-	// for each graphics component
-	// extract the sprite into the list
+	// for each entity (after camera=0)
+
+	// ask the graphics component to get the sprite
+
+	// set sprite position relative to camera position
+	//sf::Vector2f camerapos = getCamera_worldpos();
+
+	// put sprite into spritelist
+
 	// increment the size
 
 	// test code ////////////////////////////////////////////////////
@@ -61,7 +73,8 @@ sf::Sprite* GameState::get_spritelist(int* size)
 	sf::Texture texture;
 	assert(texture.loadFromFile("./../res/graphics/actors/player1.jpg"));
 	sprite.setTexture(texture);
-	sprite.setScale(0.2f, 0.2f);
+	sprite.setScale(0.5f, 0.5f);
+	//sprite.setPosition(sf::Vector2f(0.0f, 0.0f));
 	spritelist[0] = sprite;
 	//////////////////////////////////////////////////////////////////
 

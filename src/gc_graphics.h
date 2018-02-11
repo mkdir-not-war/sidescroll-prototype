@@ -1,7 +1,7 @@
 #ifndef GC_GRAPHICS_H_37285982
 #define GC_GRAPHICS_H_37285982
 
-#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Sprite.hpp>
 #include <cassert>
 
 class GC_Graphics

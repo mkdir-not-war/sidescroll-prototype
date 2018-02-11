@@ -6,6 +6,8 @@
 //#include "gc_input.h"
 //#include "gc_ai.h"
 
+#include <SFML/System.hpp>
+
 class GC_State
 {
 private:
@@ -16,6 +18,8 @@ private:
 	//const GC_Input* input_;
 	//const GC_AI* ai_;
 
+	sf::Vector2f worldposition;
+
 protected:
 	GC_State(const std::string &);
 
@@ -23,9 +27,11 @@ protected:
 	*	Calls factory to find graphics component flyweight 
 	* 	given entityname. 
 	*/
-	GC_Graphics* getGraphics(const std::string &);
+	GC_Graphics* getGraphics();
 public:
 	~GC_State();
+
+	sf::Vector2f get_worldpos() const;
 };
 
 #endif

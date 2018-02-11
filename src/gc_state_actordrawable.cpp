@@ -2,13 +2,14 @@
 
 #include "gc_state_actordrawable.h"
 
-GC_State_ActorDrawable::GC_State_ActorDrawable(sf::Texture* tex):
-	next_texture(NULL)
+GC_State_ActorDrawable::GC_State_ActorDrawable(
+	const std::string &entityname, sf::Texture* tex) :
+	GC_State(entityname)
 {
 	sprite.setTexture(*tex);
 }
 
-GC_State_ActorDrawable::setSpriteTexture(sf::Texture* tex)
+void GC_State_ActorDrawable::setSpriteTexture(sf::Texture* tex)
 {
 	sprite.setTexture(*tex);
 }

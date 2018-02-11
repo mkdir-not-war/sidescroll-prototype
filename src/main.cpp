@@ -19,7 +19,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "client");
 
     // initialize gamestate
-    GameState gs(window);
+    GameState gs;
 
     // setup vars for game loop
     sf::Clock clock;
@@ -55,7 +55,7 @@ int main()
 
         // graphics stuff here
         sf::Sprite* spritelist = gs.get_spritelist(&spritelist_size);
-        GraphicsManager::draw(window, spritelist, spritelist_size);
+        GraphicsManager::draw(&window, spritelist, spritelist_size);
     }
 
     return 0;

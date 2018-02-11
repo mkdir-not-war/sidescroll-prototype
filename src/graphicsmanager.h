@@ -1,10 +1,14 @@
-#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 
 #ifndef MYGRAPHICS_H_317890327
 #define MYGRAPHICS_H_317890327
 
-static class GraphicsManager
+class GraphicsManager
 {
+private:
+	GraphicsManager() {}
+
 public:
 	/*
 	*	input:
